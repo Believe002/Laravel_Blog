@@ -31,8 +31,8 @@ jobs:
       Dockerfile: '**/Dockerfile'
       tags: $(Build.BuildId)
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      ArtifactName: 'laravel_image_drop_$(Build.BuildId)'
-      publishLocation: 'Container'
+  # - task: PublishBuildArtifacts@1
+  #   inputs:
+  #     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+  #     ArtifactName: 'laravel_image_drop_$(Build.BuildId)'
+  #     publishLocation: 'Container'
