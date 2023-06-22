@@ -1,0 +1,31 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- azure-pipeline
+
+jobs: 
+- job: BuildAndPush 
+  displayName: 'Build & Docker Image'
+  pool:
+     vmImage: ubuntu-latest
+
+  steps:
+  - checkout: self
+
+  - task: Docker@2
+    inputs:
+     containerRegistry: 'Blaze-Registry-service'
+     repository: blazeregis
+     command: 'buildAndPush'
+     Dockerfile: '**/Dockerfile'
+     tags: $(Build.BuildId)
+
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'laravel_image_drop_$(Build.BuildId)'
+      publishLocation: 'Container'
