@@ -52,4 +52,6 @@ WORKDIR /Laravel_App
 USER $user
 COPY . .
 
+EXPOSE 8000
+
 ENTRYPOINT [ "Docker/entrypoint.sh" ]
