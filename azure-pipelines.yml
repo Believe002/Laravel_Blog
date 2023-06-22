@@ -9,8 +9,8 @@ trigger:
 jobs: 
 - job: BuildAndPush 
   displayName: 'Build & Docker Image'
-  pool:
-     vmImage: ubuntu-latest
+  pool: BlazeAgent
+    #  vmImage: ubuntu-latest
 
   steps:
   - checkout: self
