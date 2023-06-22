@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 trigger:
-- azure-pipeline
+- azure-pipelines
 
 jobs: 
 - job: BuildAndPush 
@@ -18,7 +18,7 @@ jobs:
   - task: Docker@2
     inputs:
      containerRegistry: 'Blaze-Registry-service'
-     repository: blazeregis
+     repository: laravel_blog
      command: 'buildAndPush'
      Dockerfile: '**/Dockerfile'
      tags: $(Build.BuildId)
