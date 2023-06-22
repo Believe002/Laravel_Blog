@@ -15,21 +15,21 @@ jobs:
   steps:
   - checkout: self
 
-  # - task: Docker@2
-  #   inputs:
-  #    containerRegistry: 'Blaze-Registry-service'
-  #    repository: laravel_blog
-  #    command: 'buildAndPush'
-  #    Dockerfile: '**/Dockerfile'
-  #    tags: $(Build.BuildId)
-
   - task: Docker@2
     inputs:
-      containerRegistry: 'Azure-To-Docker-Service'
-      repository: 'mrbelieve002/laravel_blog'
-      command: 'buildAndPush'
-      Dockerfile: '**/Dockerfile'
-      tags: $(Build.BuildId)
+     containerRegistry: 'Blaze-Registry-service'
+     repository: blazeregistry.azurecr.io/laravel_blog
+     command: 'buildAndPush'
+     Dockerfile: '**/Dockerfile'
+     tags: $(Build.BuildId)
+
+  # - task: Docker@2
+  #   inputs:
+  #     containerRegistry: 'Azure-To-Docker-Service'
+  #     repository: 'mrbelieve002/laravel_blog'
+  #     command: 'buildAndPush'
+  #     Dockerfile: '**/Dockerfile'
+  #     tags: $(Build.BuildId)
 
   - task: PublishBuildArtifacts@1
     inputs:
